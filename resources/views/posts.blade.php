@@ -8,11 +8,8 @@
 <body>
     <?php foreach ($posts as $post) : ?>
         <article>
-        <?php
-phpinfo();
- ?>
                 <a href="posts/<?php
-                echo $post->slug;
+                echo $post->id;
                  ?>"><h1><?php
                  echo $post->title; 
                  ?></h1> </a>
