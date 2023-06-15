@@ -1,30 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <?php foreach ($posts as $post) : ?>
-        <article>
-            
-                <a href="posts/<?php
-                echo $post->slug;
-                 ?>"><h1><?php
-                 echo $post->title; 
-                 ?></h1> </a>
-                 By <a href="author/{{ $post->author->username }}">
-    {{ $post->author->name}}
-    </a> in 
-    <a href="#">{{ $post->category->name }}</a>
-                 <div>
-                    <?php 
-                    echo $post->excerpt;
-                    ?>
-    </div>
-                </article>
-        <?php endforeach; ?>
 
-</body>
-</html>
+<x-layout>
+    @include('_posts-header')
+
+        <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6">
+            <x-post-featured-card></x-post-featured-card>
+
+            <div class="lg:grid lg:grid-cols-2">
+                <x-post-card></x-post-card>
+                <x-post-card></x-post-card>
+            </div>
+
+            <div class="lg:grid lg:grid-cols-3">
+   <x-post-card></x-post-card>
+   <x-post-card></x-post-card>
+   <x-post-card></x-post-card>
+
+            </div>
+        </main>
+</x-layout>
+
