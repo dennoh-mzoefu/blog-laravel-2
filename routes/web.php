@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
@@ -39,6 +40,14 @@ Route::get('posts/{post:slug}',function(Post $post){
 
     return view('post', [
         'post' => $post
+    ]);
+    
+})->where('post','[A-z_\-]+');
+
+Route::get('categories/{category:slug}',function(Category $category){
+// dd()
+    return view('posts', [
+        'posts' => $category->posts
     ]);
     
 })->where('post','[A-z_\-]+');

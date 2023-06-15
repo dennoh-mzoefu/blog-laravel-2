@@ -13,6 +13,7 @@
                  ?>"><h1><?php
                  echo $post->title; 
                  ?></h1> </a>
+                 <a href="categories/{{ $post->category->slug }}">{{ $post->category->name }}</a>
                  <div>
                     <?php 
                     echo $post->excerpt;
