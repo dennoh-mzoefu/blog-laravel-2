@@ -9,6 +9,9 @@
 <article>
 
     <h1><?php echo $post->title; ?></h1>
+    By <a href="#">
+    {{ $post->user->name}}
+    </a> in 
     <a href="#">{{ $post->category->name }}</a>
     <div><?php echo $post->body; ?></div>
        
