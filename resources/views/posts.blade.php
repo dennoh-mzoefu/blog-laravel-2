@@ -9,7 +9,7 @@
     <?php foreach ($posts as $post) : ?>
         <article>
                 <a href="posts/<?php
-                echo $post->id;
+                echo $post->slug;
                  ?>"><h1><?php
                  echo $post->title; 
                  ?></h1> </a>

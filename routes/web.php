@@ -35,10 +35,10 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('posts/{id}',function(Post $id){
+Route::get('posts/{post:slug}',function(Post $post){
 
     return view('post', [
-        'post' => $id
+        'post' => $post
     ]);
     
 })->where('post','[A-z_\-]+');
