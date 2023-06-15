@@ -18,9 +18,14 @@ class DatabaseSeeder extends Seeder
     {
         
 
-        User::factory()->create();
-        Post::factory()->create();
-        Category::factory()->create();
+        // $user = User::create([
+        //     'name'=>'Denis Gichana'
+        // ]);
+        Post::factory(5)->create();
+        // Post::factory(5)->create([
+        //     'user_id' =>
+        // ]);
+ 
 
        
     }
