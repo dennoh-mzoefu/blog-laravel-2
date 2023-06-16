@@ -19,19 +19,6 @@ use Illuminate\Support\Facades\File;
 */
 
 Route::get('/', function () {
-  
-   
-    // $posts=array_map(function($file){
-    //     $document=YamlFrontMatter::parseFile($file);
-    //     $document->title,
-    //     $document->excerpt,
-    //     $document->date,
-    //     $document->body(),
-    //     $document->slug
-
-    // },$files)
-
-    
     return view('posts',[
         'posts' => Post::latest()->with(['category','author'])->get()
     ]);
