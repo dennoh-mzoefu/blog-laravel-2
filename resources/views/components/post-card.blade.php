@@ -12,9 +12,9 @@
                         <div class="mt-8 flex flex-col justify-between">
                             <header>
                                 <div class="space-x-2">
-                                <a href="/categories/{{ $post->category->slug }}"
+                                <a href="/categories/"
                                    class="px-3 py-1 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold"
-                                   style="font-size: 10px">{{ $post->category->name}}</a>
+                                   style="font-size: 10px"></a>
                                 </div>
 
                                 <div class="mt-4">
@@ -36,8 +36,7 @@
                                 <div class="flex items-center text-sm">
                                     <img src="./images/lary-avatar.svg" alt="Lary avatar">
                                     <div class="ml-3">
-                                        <h5 class="font-bold">Lary Laracore</h5>
-                                        <h6>Mascot at Laracasts</h6>
+                                        <h5 class="font-bold">Lary Laracore</h5>   
                                     </div>
                                 </div>
 
@@ -47,6 +46,14 @@
                                     >Read More</a>
                                 </div>
                             </footer>
+                            <div class="flex mt-8">
+                            @foreach($post->tags as $tag)
+                                <a href="/tag/{{$tag->name}}">
+                                    <div class="px-2 py-1 mx-2 bg-blue-200 rounded-sm">{{$tag->name}}</div>
+                                </a>
+                            @endforeach
+                               
+                            </div>
                         </div>
                     </div>
                 </article>

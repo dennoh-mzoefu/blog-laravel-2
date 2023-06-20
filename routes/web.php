@@ -2,6 +2,7 @@
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
@@ -20,7 +21,14 @@ use Illuminate\Support\Facades\File;
 
 Route::get('/', function () {
     return view('posts',[
-        'posts' => Post::latest()->with(['category','author'])->get()
+        'posts' => Post::latest()->with(['category','author','tags'])->get(),
+    ]);
+});
+
+// similar tags page
+Route::get('/tag/{tag:name}', function (Tag $tag) {
+    return view('posts',[
+        'posts' => $tag->posts,
     ]);
 });
 
@@ -33,7 +41,6 @@ Route::get('posts/{post:slug}',function(Post $post){
 })->where('post','[A-z_\-]+');
 
 Route::get('categories/{category:slug}',function(Category $category){
-// dd()
     return view('posts', [
         'posts' => $category->posts
     ]);
