@@ -5,9 +5,7 @@ use App\Models\Post;
 use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
-use Spatie\YamlFrontMatter\YamlFrontMatter;
-use Illuminate\Support\Facades\File;
-
+use App\Http\Controllers\PostController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,6 +22,15 @@ Route::get('/', function () {
         'posts' => Post::latest()->with(['category','author','tags'])->get(),
     ]);
 });
+
+//submit articles
+Route::post('/posts', 'App\Http\Controllers\PostController@store')->name('posts.store');
+Route::get('/posts/create', 'App\Http\Controllers\PostController@create')->name('posts.create');
+
+//submit tags
+Route::get('/tags/create', 'App\Http\Controllers\TagController@create')->name('tags.create');
+Route::post('/tags', 'App\Http\Controllers\TagController@store')->name('tags.store');
+
 
 // similar tags page
 Route::get('/tag/{tag:name}', function (Tag $tag) {
