@@ -1,8 +1,8 @@
 <x-layout>
+    <h1 class="text-2xl text-center font-bold">Admin Section </h1>
     <div class="flex flex-wrap">
     <div>
     <div class='flex flex-col justify-start items-center '>
-    <h1 class="text-2xl font-bold">Admin Section </h1>
     <h2 class="mt-10 text-blue bg-gray-100 px-2 py-1">Submit Article</h2>
     </div>
 <form method="POST" action="{{ route('posts.store') }}" class=' flex flex-col justify-start'>

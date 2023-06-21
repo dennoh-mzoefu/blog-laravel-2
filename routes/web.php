@@ -20,6 +20,7 @@ use App\Http\Controllers\PostController;
 Route::get('/', function () {
     return view('posts',[
         'posts' => Post::latest()->with(['category','author','tags'])->get(),
+        'categories' => Category::all()
     ]);
 });
 
@@ -36,6 +37,8 @@ Route::post('/tags', 'App\Http\Controllers\TagController@store')->name('tags.sto
 Route::get('/tag/{tag:name}', function (Tag $tag) {
     return view('posts',[
         'posts' => $tag->posts,
+        'categories' => Category::all()
+
     ]);
 });
 
@@ -49,7 +52,9 @@ Route::get('posts/{post:slug}',function(Post $post){
 
 Route::get('categories/{category:slug}',function(Category $category){
     return view('posts', [
-        'posts' => $category->posts
+        'posts' => $category->posts,
+        'currentCategory' => $category,
+        'categories' => Category::all()
     ]);
     
 })->where('post','[A-z_\-]+');
