@@ -16,9 +16,12 @@
                                 </div>
 
                                 <div class="mt-4">
-                                    <h1 class="text-3xl">
-                                        {{$post->title}}
-                                </h1>
+                                    <a href="posts/{{$post->slug}}">
+
+                                        <h1 class="text-3xl">
+                                            {{$post->title}}
+                                        </h1>
+                                    </a>
 
                                     <span class="mt-2 block text-gray-400 text-xs">
                                         Published <time>{{$post->created_at->diffForHumans()}}</time>

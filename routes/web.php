@@ -17,12 +17,7 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/', function () {
-    return view('posts',[
-        'posts' => Post::latest()->with(['category','author','tags'])->get(),
-        'categories' => Category::all()
-    ]);
-});
+Route::get('/', [PostController::class,'index'])->name('home');
 
 //submit articles
 Route::post('/posts', 'App\Http\Controllers\PostController@store')->name('posts.store');
