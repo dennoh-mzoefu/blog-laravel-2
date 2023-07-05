@@ -12,6 +12,8 @@ class Post extends Model
     // protected $fillable = ['title','excerpt','body','id']; // declares fields that are fillable with create or update methods
     protected $guarded = [];  //declares the attributes that arent fillable inthis case all are not fillable
 
+
+
     // eloquent relationships
 
     public function category(){
@@ -29,7 +31,7 @@ class Post extends Model
     return $this->belongsToMany(Tag::class);
 }
     public function scopeFilter($query, array $filters){
-        $query->when($filters['search'] ?? false, fn($query, $search) =>
+      $query->when($filters['search'] ?? false, fn($query, $search) =>
         $query
             ->where('title','like','%' . $search . '%')
             ->orWhere('body','like','%' . $search . '%')
